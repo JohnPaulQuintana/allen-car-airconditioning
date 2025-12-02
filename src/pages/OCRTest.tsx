@@ -548,60 +548,64 @@ export default function OCRTest() {
                   </div>
 
                   {/* Repairs List */}
-                  <div className="space-y-4">
-                    {visit.repairs.map((repair) => (
-                      <div key={repair.id} className="bg-gray-900/50 rounded-xl p-4 border border-gray-700/30">
-                        <div className="flex justify-between items-start mb-3">
-                          <div className="flex-1">
-                            <div className="font-medium text-lg mb-1">{repair.service}</div>
-                            <div className="flex items-center gap-3 text-sm text-gray-400">
-                              <span className="flex items-center gap-1">
-                                <User className="w-3 h-3" />
-                                {repair.technician}
-                              </span>
-                              <span className="flex items-center gap-1">
-                                <Clock className="w-3 h-3" />
-                                {repair.timestamp}
-                              </span>
-                              <span className={`px-2 py-0.5 rounded-full text-xs ${
-                                repair.status === 'completed' 
-                                  ? 'bg-green-900/30 text-green-400 border border-green-800/50' 
-                                  : repair.status === 'in-progress'
-                                  ? 'bg-yellow-900/30 text-yellow-400 border border-yellow-800/50'
-                                  : 'bg-gray-800 text-gray-400 border border-gray-700'
-                              }`}>
-                                {repair.status}
-                              </span>
-                            </div>
-                          </div>
-                          <div className="text-right">
-                            <div className="text-xl font-bold text-green-400">₱{repair.cost.toLocaleString()}</div>
-                            <div className="text-xs text-gray-400">Invoice: {repair.invoiceNumber}</div>
-                          </div>
-                        </div>
+<div className="space-y-4">
+  {visit.repairs.map((repair) => (
+    <div key={repair.id} className="bg-gray-900/50 rounded-xl p-4 border border-gray-700/30">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-start mb-3 gap-2 md:gap-0">
+        {/* Left Column */}
+        <div className="flex-1">
+          <div className="font-medium text-lg mb-1">{repair.service}</div>
+          <div className="flex flex-wrap items-center gap-2 text-sm text-gray-400">
+            <span className="flex items-center gap-1">
+              <User className="w-3 h-3" />
+              {repair.technician}
+            </span>
+            <span className="flex items-center gap-1">
+              <Clock className="w-3 h-3" />
+              {repair.timestamp}
+            </span>
+            <span className={`px-2 py-0.5 rounded-full text-xs ${
+              repair.status === 'completed' 
+                ? 'bg-green-900/30 text-green-400 border border-green-800/50' 
+                : repair.status === 'in-progress'
+                ? 'bg-yellow-900/30 text-yellow-400 border border-yellow-800/50'
+                : 'bg-gray-800 text-gray-400 border border-gray-700'
+            }`}>
+              {repair.status}
+            </span>
+          </div>
+        </div>
 
-                        {/* Parts Used */}
-                        {repair.parts.length > 0 && (
-                          <div className="mt-3 pt-3 border-t border-gray-700/30">
-                            <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
-                              <Tag className="w-4 h-4" />
-                              Parts Used
-                            </div>
-                            <div className="flex flex-wrap gap-2">
-                              {repair.parts.map((part, idx) => (
-                                <span 
-                                  key={idx} 
-                                  className="px-3 py-1.5 bg-gray-800/70 rounded-lg text-sm border border-gray-700/50"
-                                >
-                                  {part}
-                                </span>
-                              ))}
-                            </div>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
+        {/* Right Column */}
+        <div className="text-left md:text-right flex-shrink-0">
+          <div className="text-xl font-bold text-green-400">₱{repair.cost.toLocaleString()}</div>
+          <div className="text-xs text-gray-400 break-words">Invoice: {repair.invoiceNumber}</div>
+        </div>
+      </div>
+
+      {/* Parts Used */}
+      {repair.parts.length > 0 && (
+        <div className="mt-3 pt-3 border-t border-gray-700/30">
+          <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
+            <Tag className="w-4 h-4" />
+            Parts Used
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {repair.parts.map((part, idx) => (
+              <span 
+                key={idx} 
+                className="px-3 py-1.5 bg-gray-800/70 rounded-lg text-sm border border-gray-700/50"
+              >
+                {part}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  ))}
+</div>
+
                 </div>
               ))}
             </div>
