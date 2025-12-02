@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Camera, X, RefreshCw, History, Calendar, CheckCircle, AlertCircle, Download, Clock, User, Tag, DollarSign, FileText } from "lucide-react";
+import { Camera, X, RefreshCw, History, Calendar, CheckCircle, AlertCircle, Clock, User, Tag, FileText } from "lucide-react";
 
 export default function OCRTest() {
   // Core states
