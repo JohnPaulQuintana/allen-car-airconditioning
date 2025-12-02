@@ -170,7 +170,7 @@ export default function OCRTest() {
         }
       ];
       
-      setServiceHistory(mockHistory);
+      setServiceHistory(mockHistory as typeof serviceHistory);
       setDebugInfo(`Found ${mockHistory.length} service visits`);
     }, 1000);
   };
@@ -525,7 +525,7 @@ export default function OCRTest() {
 
             {/* History Timeline */}
             <div className="space-y-4">
-              {serviceHistory.map((visit, visitIndex) => (
+              {serviceHistory.map((visit) => (
                 <div key={visit.date} className="bg-gray-800/30 rounded-2xl p-5 border border-gray-700/50">
                   {/* Visit Header */}
                   <div className="flex items-center justify-between mb-4 pb-4 border-b border-gray-700/50">
